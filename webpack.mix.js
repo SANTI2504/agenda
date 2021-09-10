@@ -11,6 +11,21 @@ const mix = require('laravel-mix');
  |
  */
 
+// creacion para plantillas
+mix.styles([
+    'resources/css/main.min.css',
+
+], 'public/css/app/app.css');
+
+mix.scripts([
+    'resources/js/main.min.js',
+    'resources/js/locales-all.min.js',
+    'resources/js/schedule.js',
+
+], 'public/js/app/app.js');
+
+
+
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sourceMaps();
