@@ -73,14 +73,18 @@
                 </div>
             </div>
         </nav>
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/app/app.js') }}" defer></script>
-        <script src="{{ asset('js/app/schedule.js') }}" defer></script>
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+    <script type="text/javascript">
+        //recibe la url de acceso al de public
+        var baseURL = {!! json_encode(url('/')) !!};
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app/app.js') }}" defer></script>
+    <script src="{{ asset('js/app/schedule.js') }}" defer></script>
 </body>
 </html>

@@ -11,15 +11,22 @@ class Event extends Model
     protected $fillable=[
         'title',
         'description',
+        'date',
+        'time',
+        //datos requeridos por fullcalendar
         'start',
         'end',
+
+
+        //'end_time',
     ];
 
+    //validaciones
     static $rules= [
         'title'=>'required',
         'description'=>'required',
-        'start'=>'required',
-        'end'=>'required',
+        'date'=>'required',
+        'time'=>'required',
     ];
 
 }

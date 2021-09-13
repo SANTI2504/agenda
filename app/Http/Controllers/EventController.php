@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+//dar formato a varios datos
+use Carbon\Carbon;
+use function GuzzleHttp\Promise\all;
 
 class EventController extends Controller
 {
@@ -49,7 +52,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        //muestra todos los registros
+        $event=Event::all();
+        //devuelve el formato en json
+        return response()->json($event);
     }
 
     /**
@@ -58,9 +64,16 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit($id)
     {
-        //
+        //sentencia consulta por id
+        $event=Event::find($id);
+
+        //cambio de formato de fecha y hora a solo fecha
+        //$event->start=Carbon::createFromFormat('Y-m-d H:i:s', $event-> start)->format('Y-m-d');
+        //$event->end=Carbon::createFromFormat('Y-m-d H:i:s', $event-> end)->format('Y-m-d');
+        //devuelve la sentencia en json
+        return response()->json($event);
     }
 
     /**
@@ -70,9 +83,13 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Request $request, $id )
     {
-        //
+        //validar informacion
+        request()->validate(Event::$rules);
+       $event=Event::find($id)->update($request->all());
+       return response()->json($event);
+
     }
 
     /**
@@ -81,8 +98,11 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+        //eliminar todos los datos por id
+        $event = Event::find($id)->delete();
+        //devuelve la sentencia en json
+        return response()->json($event);
     }
 }

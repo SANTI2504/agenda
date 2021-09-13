@@ -17,9 +17,13 @@ class  CreateEventsTable extends Migration
             $table->id();
             $table->string('title', 255);
             $table->string('description', 1000);
+            $table->date('date');
+            $table->time('time');
 
-            $table->dateTime('start');
-            $table->dateTime('end');
+            //datos requeridos por fullcalendar
+            $table->datetime('start');
+            $table->datetime('end');
+
             $table->timestamps();
         });
     }

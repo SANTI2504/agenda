@@ -24,4 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('evento', [EventController::class, 'index']);
+Route::post('evento/mostrar', [EventController::class, 'show']);
+Route::post('evento/editar/{id}', [EventController::class, 'edit']);
+Route::post('evento/actualizar/{id}', [EventController::class, 'update']);
 Route::post('evento/agregar', [EventController::class, 'store']);
+Route::post('evento/borrar/{id}',[EventController::class, 'destroy']);

@@ -2,15 +2,8 @@
 @section('content')
     <div class="container">
         <div id="calendar">
-        calendario
         </div>
     </div>
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#evento">
-        Launch static backdrop modal
-    </button>
-
     <!-- Modal -->
     <div class="modal fade" id="evento" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -22,12 +15,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="" id="formularioEventos">
                         @csrf
+                        <!-- start validaciones -->
+                        <!-- end validaciones-->
                         <div class="form-group">
                             <label for="id">ID</label>
-                            <input type="text" class="form-control" name="id" id="id" aria-describedby="">
-                            <small id="HelpId" class="form-text text-muted">Help text</small>
+                            <input type="text" class="form-control" name="id" id="id" aria-describedby="" readonly>
+                            <small id="HelpId" class="form-text text-muted">El id es un dato automatico y no se puede modificar</small>
                         </div>
                         <div class="form-group">
                             <label for="title">Titulo</label>
@@ -39,16 +34,21 @@
                             <textarea class="form-control" name="description" id="description" rows="3"></textarea>
                             <small id="HelpId" class="form-text text-muted">Help text</small>
                         </div>
-                        <div class="form-group">
-                            <label for="start">start</label>
-                            <input type="datetime-local" class="form-control" name="start" id="start" aria-describedby="">
-                            <small id="HelpId" class="form-text text-muted">Help text</small>
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <label for="date">Fecha</label>
+                                <input type="date" class="form-control" name="date" id="date" aria-describedby="" readonly>
+                                <small id="HelpId" class="form-text text-muted">fecha de la cita</small>
+                            </div>
+
+                            <div class="col-6">
+                                <label for="time">Hora</label>
+                                <input type="time" class="form-control" name="time" id="time" aria-describedby="">
+                                <small id="HelpId" class="form-text text-muted">Hora de la cita</small>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="end">end</label>
-                            <input type="datetime-local" class="form-control" name="end" id="end" aria-describedby="">
-                            <small id="HelpId" class="form-text text-muted">Help text</small>
-                        </div>
+
+
 
                     </form>
                 </div>
